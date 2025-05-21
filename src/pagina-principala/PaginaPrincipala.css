@@ -1,0 +1,91 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: sans-serif;
+  background-color: white;
+  color: black;
+  max-width: 400px;
+  margin: 0 auto;
+  border: 1px solid lightgray;
+}
+
+.header {
+  position: relative;
+  background-color: #d32f2f;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+
+.menu-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+.info-cursa {
+  text-align: center;
+  padding: 10px;
+}
+
+.text-small {
+  margin: 2px 0;
+  font-size: 14px;
+}
+
+.tabel-cursa {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.tabel-cursa th,
+.tabel-cursa td {
+  border: none;
+  padding: 8px;
+  text-align: center;
+}
+
+.tabel-cursa th {
+  background-color: #f2f2f2;
+}
+
+.meniu-jos {
+  display: flex;
+  justify-content: space-around;
+  background-color: #d32f2f;
+  color: white;
+  padding: 10px 0;
+  margin-top: auto;
+}
+
+.meniu-jos button {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.info-cursa {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.info-item {
+  font-weight: bold;
+  text-transform: lowercase;
+}
+
+.header h1 {
+  font-size: 16px;
+  font-weight: normal;
+  text-transform: uppercase;
+  margin: 0;
+}
