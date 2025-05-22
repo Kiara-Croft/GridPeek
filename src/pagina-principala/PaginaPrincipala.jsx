@@ -171,7 +171,11 @@ export default function PaginaPrincipala() {
 
       {/* Meniu jos */}
       <footer className="meniu-jos">
-        <Link to="/comparatie" className="footer-button">
+        <Link
+          to="/comparatie"
+          state={{ reset: true }}
+          className="footer-button"
+        >
           COMPARATIE PILOTI
         </Link>
 

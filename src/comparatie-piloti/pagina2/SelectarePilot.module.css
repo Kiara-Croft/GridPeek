@@ -1,0 +1,80 @@
+.selectare-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: sans-serif;
+  background-color: white;
+  max-width: 400px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.header {
+  background-color: #d32f2f;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.pilot-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.pilot-card {
+  display: flex;
+  align-items: center;
+  background-color: #e0e0e0;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+.pilot-poza {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.pilot-nume {
+  font-size: 16px;
+  font-weight: 500;
+  color: #424242;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  background-color: #d32f2f;
+  color: white;
+  padding: 10px 0;
+  flex-shrink: 0;
+}
+
+.footer-button {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.search-bar {
+  padding: 10px 20px 0;
+  background-color: white;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
