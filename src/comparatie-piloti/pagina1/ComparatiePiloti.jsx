@@ -1,6 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import styles from "./ComparatiePiloti.module.css";
+import { Home, History, Trash } from "lucide-react";
 
 export default function ComparatiePiloti() {
   const location = useLocation();
@@ -102,7 +103,7 @@ export default function ComparatiePiloti() {
       {/*  Butoane extra */}
       <div className={styles["extra-buttons"]}>
         <button className={styles["reset-button"]} onClick={handleReset}>
-          Resetează selecția
+          <Trash size={20} style={{ marginRight: "8px" }} />
         </button>
 
         <button
@@ -116,9 +117,12 @@ export default function ComparatiePiloti() {
 
       <footer className={styles["footer"]}>
         <Link to="/" className={styles["footer-button"]}>
-          PAGINA PRINCIPALA
+          <Home size={20} style={{ marginRight: "8px" }} />
         </Link>
-        <button className={styles["footer-button"]}>CLASAMENTE TRECUTE</button>
+
+        <Link to="/istoric" className={styles["footer-button"]}>
+          <History size={20} style={{ marginRight: "8px" }} />
+        </Link>
       </footer>
     </div>
   );

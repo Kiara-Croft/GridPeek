@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./PaginaPrincipala.css";
+import { Users, History, Star } from "lucide-react";
 
 export default function PaginaPrincipala() {
   return (
@@ -176,11 +177,16 @@ export default function PaginaPrincipala() {
           state={{ reset: true }}
           className="footer-button"
         >
-          COMPARATIE PILOTI
+          <Users size={20} style={{ marginRight: "8px" }} />
         </Link>
 
-        <button>CLASAMENTE TRECUTE</button>
-        <button>ECHIPA PREFERATA</button>
+        <Link to="/istoric" className="footer-button">
+          <History size={20} style={{ marginRight: "8px" }} />
+        </Link>
+
+        <button className="footer-button">
+          <Star size={20} style={{ marginRight: "8px" }} />
+        </button>
       </footer>
     </div>
   );
