@@ -9,17 +9,15 @@ import Pilot from "./istoric/pilot/pilot";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<PaginaPrincipala />} />
-        <Route path="/comparatie" element={<ComparatiePiloti />} />
-        <Route path="/pagina2" element={<SelectarePilot />} />
-        <Route path="/pagina3" element={<ComparatieDetalii />} />
-        <Route path="/istoric" element={<Selectare />} />
-        <Route path="/istoric/locatie" element={<Locatie />} />
-        <Route path="/istoric/pilot" element={<Pilot />} />
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/" element={<PaginaPrincipala />} />
+      <Route path="/comparatie" element={<ComparatiePiloti />} />
+      <Route path="/pagina2" element={<SelectarePilot />} />
+      <Route path="/pagina3" element={<ComparatieDetalii />} />
+      <Route path="/istoric" element={<Selectare />} />
+      <Route path="/istoric/locatie" element={<Locatie />} />
+      <Route path="/istoric/pilot" element={<Pilot />} />
+    </Routes>
   );
 }
 

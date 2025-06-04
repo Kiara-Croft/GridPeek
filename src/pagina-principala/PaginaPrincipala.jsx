@@ -1,12 +1,28 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import "./PaginaPrincipala.css";
 import { Users, History, Star } from "lucide-react";
+import { useFavoriteTeam } from "../FavoriteTeamContext/FavoriteTeamContext"; // nou: context echipa favorită
+import "./PaginaPrincipala.css";
 
 export default function PaginaPrincipala() {
+  const [showDropdown, setShowDropdown] = useState(false);
+  const { team, setTeam, teams } = useFavoriteTeam(); // nou: hook context echipe
+
+  const teamStyles = {
+    "Red Bull": { color: "#1E41FF" },
+    Ferrari: { color: "#DC0000" },
+    Mercedes: { color: "#00D2BE" },
+    McLaren: { color: "#FF8700" },
+    Haas: { color: "#555555" },
+    "Aston Martin": { color: "#006F62" },
+  };
+
+  const favoriteColor = teamStyles[team]?.color || "#d32f2f"; // fallback: roșu standard
+
   return (
     <div className="container">
       {/* Header */}
-      <header className="header">
+      <header className="header" style={{ backgroundColor: favoriteColor }}>
         <h1>PAGINA PRINCIPALA</h1>
       </header>
 
@@ -28,150 +44,19 @@ export default function PaginaPrincipala() {
         </thead>
 
         <tbody>
-          <tr>
-            <td>1</td>
-            <td></td>
-            <td></td>
-            <td>25</td>
-          </tr>
-
-          <tr>
-            <td>2</td>
-            <td></td>
-            <td></td>
-            <td>18</td>
-          </tr>
-
-          <tr>
-            <td>3</td>
-            <td></td>
-            <td></td>
-            <td>15</td>
-          </tr>
-
-          <tr>
-            <td>4</td>
-            <td></td>
-            <td></td>
-            <td>12</td>
-          </tr>
-
-          <tr>
-            <td>5</td>
-            <td></td>
-            <td></td>
-            <td>10</td>
-          </tr>
-
-          <tr>
-            <td>6</td>
-            <td></td>
-            <td></td>
-            <td>8</td>
-          </tr>
-
-          <tr>
-            <td>7</td>
-            <td></td>
-            <td></td>
-            <td>6</td>
-          </tr>
-
-          <tr>
-            <td>8</td>
-            <td></td>
-            <td></td>
-            <td>4</td>
-          </tr>
-
-          <tr>
-            <td>9</td>
-            <td></td>
-            <td></td>
-            <td>2</td>
-          </tr>
-
-          <tr>
-            <td>10</td>
-            <td></td>
-            <td></td>
-            <td>1</td>
-          </tr>
-
-          <tr>
-            <td>11</td>
-            <td></td>
-            <td></td>
-            <td>0</td>
-          </tr>
-
-          <tr>
-            <td>12</td>
-            <td></td>
-            <td></td>
-            <td>0</td>
-          </tr>
-
-          <tr>
-            <td>13</td>
-            <td></td>
-            <td></td>
-            <td>0</td>
-          </tr>
-
-          <tr>
-            <td>14</td>
-            <td></td>
-            <td></td>
-            <td>0</td>
-          </tr>
-
-          <tr>
-            <td>15</td>
-            <td></td>
-            <td></td>
-            <td>0</td>
-          </tr>
-
-          <tr>
-            <td>16</td>
-            <td></td>
-            <td></td>
-            <td>0</td>
-          </tr>
-
-          <tr>
-            <td>17</td>
-            <td></td>
-            <td></td>
-            <td>0</td>
-          </tr>
-
-          <tr>
-            <td>18</td>
-            <td></td>
-            <td></td>
-            <td>0</td>
-          </tr>
-
-          <tr>
-            <td>19</td>
-            <td></td>
-            <td></td>
-            <td>0</td>
-          </tr>
-
-          <tr>
-            <td>20</td>
-            <td></td>
-            <td></td>
-            <td>0</td>
-          </tr>
+          {[...Array(20)].map((_, index) => (
+            <tr key={index}>
+              <td>{index + 1}</td>
+              <td></td>
+              <td></td>
+              <td>{[25, 18, 15, 12, 10, 8, 6, 4, 2, 1][index] || 0}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
 
       {/* Meniu jos */}
-      <footer className="meniu-jos">
+      <footer className="meniu-jos" style={{ backgroundColor: favoriteColor }}>
         <Link
           to="/comparatie"
           state={{ reset: true }}
@@ -184,9 +69,32 @@ export default function PaginaPrincipala() {
           <History size={20} style={{ marginRight: "8px" }} />
         </Link>
 
-        <button className="footer-button">
-          <Star size={20} style={{ marginRight: "8px" }} />
-        </button>
+        {/* e noua bucata: dropdown echipă favorită */}
+        <div style={{ position: "relative" }}>
+          <button
+            className="footer-button"
+            onClick={() => setShowDropdown(!showDropdown)}
+          >
+            <Star size={20} style={{ marginRight: "8px" }} />
+          </button>
+
+          {showDropdown && (
+            <div className="dropdown-echipe">
+              {teams.map((t) => (
+                <div
+                  key={t}
+                  className="echipa-item"
+                  onClick={() => {
+                    setTeam(t);
+                    setShowDropdown(false);
+                  }}
+                >
+                  {t}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </footer>
     </div>
   );

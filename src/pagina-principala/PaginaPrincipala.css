@@ -107,3 +107,28 @@
   border: none;
   text-decoration: none;
 }
+
+.dropdown-echipe {
+  position: absolute;
+  bottom: 40px; /* apare deasupra butonului */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 5px 0;
+  width: 140px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.echipa-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.echipa-item:hover {
+  background-color: #f2f2f2;
+}
