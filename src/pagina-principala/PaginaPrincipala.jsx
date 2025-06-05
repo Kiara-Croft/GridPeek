@@ -9,9 +9,9 @@ export default function PaginaPrincipala() {
   const { team, setTeam, teams } = useFavoriteTeam(); // nou: hook context echipe
 
   const teamStyles = {
-    "Red Bull": { color: "#1E41FF" },
-    Ferrari: { color: "#DC0000" },
-    Mercedes: { color: "#00D2BE" },
+    "Red Bull": { color: "#4570C0" },
+    Ferrari: { color: "#D52E37" },
+    Mercedes: { color: "#75F0D3" },
     McLaren: { color: "#FF8700" },
     Haas: { color: "#555555" },
     "Aston Martin": { color: "#006F62" },

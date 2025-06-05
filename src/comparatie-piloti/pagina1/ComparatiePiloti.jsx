@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import styles from "./ComparatiePiloti.module.css";
 import { Home, History, Trash } from "lucide-react";
+import { useFavoriteTeam } from "../../FavoriteTeamContext/FavoriteTeamContext";
 
 export default function ComparatiePiloti() {
   const location = useLocation();
@@ -9,7 +10,19 @@ export default function ComparatiePiloti() {
   const [pilot1, setPilot1] = useState(null);
   const [pilot2, setPilot2] = useState(null);
 
-  //  Resetare când venim din pagina principală
+  // Tema echipă favorită
+  const { team } = useFavoriteTeam();
+  const teamStyles = {
+    "Red Bull": { color: "#4570C0" },
+    Ferrari: { color: "#D52E37" },
+    Mercedes: { color: "#75F0D3" },
+    McLaren: { color: "#FF8700" },
+    Haas: { color: "#555555" },
+    "Aston Martin": { color: "#006F62" },
+  };
+  const favoriteColor = teamStyles[team]?.color || "#d32f2f";
+
+  // Resetare la venire din pagina principală
   useEffect(() => {
     if (location.state?.reset) {
       sessionStorage.removeItem("pilotLeft");
@@ -24,7 +37,7 @@ export default function ComparatiePiloti() {
     }
   }, []);
 
-  //  Salvăm pilotul selectat din pagina2
+  // Salvăm pilotul ales din pagina2
   useEffect(() => {
     if (location.state?.pilot && location.state?.slot) {
       const selected = location.state.pilot;
@@ -39,7 +52,7 @@ export default function ComparatiePiloti() {
     }
   }, [location]);
 
-  //  Funcție reset manual
+  // Reset manual
   const handleReset = () => {
     sessionStorage.removeItem("pilotLeft");
     sessionStorage.removeItem("pilotRight");
@@ -47,7 +60,7 @@ export default function ComparatiePiloti() {
     setPilot2(null);
   };
 
-  //  Mergi la pagina de comparație
+  // Trimite către pagina3
   const handleCompara = () => {
     navigate("/pagina3", {
       state: { pilot1, pilot2 },
@@ -56,7 +69,10 @@ export default function ComparatiePiloti() {
 
   return (
     <div className={styles["comparatie-container"]}>
-      <header className={styles["header"]}>
+      <header
+        className={styles["header"]}
+        style={{ backgroundColor: favoriteColor }}
+      >
         <h1>COMPARATIE PILOTI</h1>
       </header>
 
@@ -100,7 +116,6 @@ export default function ComparatiePiloti() {
         )}
       </div>
 
-      {/*  Butoane extra */}
       <div className={styles["extra-buttons"]}>
         <button className={styles["reset-button"]} onClick={handleReset}>
           <Trash size={20} style={{ marginRight: "8px" }} />
@@ -115,7 +130,10 @@ export default function ComparatiePiloti() {
         </button>
       </div>
 
-      <footer className={styles["footer"]}>
+      <footer
+        className={styles["footer"]}
+        style={{ backgroundColor: favoriteColor }}
+      >
         <Link to="/" className={styles["footer-button"]}>
           <Home size={20} style={{ marginRight: "8px" }} />
         </Link>

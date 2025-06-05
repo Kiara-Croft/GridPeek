@@ -1,12 +1,28 @@
 import { Link } from "react-router-dom";
-import styles from "./locatie.module.css";
 import { Users, Home } from "lucide-react";
+import styles from "./locatie.module.css";
+import { useFavoriteTeam } from "../../FavoriteTeamContext/FavoriteTeamContext";
 
 export default function Locatie() {
+  //  culoarea temei
+  const { team } = useFavoriteTeam();
+  const teamStyles = {
+    "Red Bull": { color: "#4570C0" },
+    Ferrari: { color: "#D52E37" },
+    Mercedes: { color: "#75F0D3" },
+    McLaren: { color: "#FF8700" },
+    Haas: { color: "#555555" },
+    "Aston Martin": { color: "#006F62" },
+  };
+  const favoriteColor = teamStyles[team]?.color || "#d32f2f";
+
   return (
     <div className={styles.container}>
-      {/* Header */}
-      <header className={styles.header}>
+      {/* colorăm header */}
+      <header
+        className={styles.header}
+        style={{ backgroundColor: favoriteColor }}
+      >
         <h1>CLASAMENTUL PE ZONE</h1>
       </header>
 
@@ -39,8 +55,11 @@ export default function Locatie() {
         </tbody>
       </table>
 
-      {/* Footer */}
-      <footer className={styles.footer}>
+      {/*  colorăm footer */}
+      <footer
+        className={styles.footer}
+        style={{ backgroundColor: favoriteColor }}
+      >
         <Link to="/" className={styles.footerButton}>
           <Home size={20} style={{ marginRight: "8px" }} />
         </Link>

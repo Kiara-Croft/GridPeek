@@ -1,10 +1,13 @@
-import styles from "./SelectarePilot.module.css";
-import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
+import { Home, Users } from "lucide-react";
+import styles from "./SelectarePilot.module.css";
 
+import { useFavoriteTeam } from "../../FavoriteTeamContext/FavoriteTeamContext";
+
+// Imagini
 import max from "./images/max.jpg";
-//import perez from "./images/perez22.png";
+// import perez from "./images/perez22.png";
 import hamilton from "./images/44.jpg";
 import russell from "./images/george.jpg";
 import leclerc from "./images/char.jpg";
@@ -18,15 +21,12 @@ import gasly from "./images/pierre.jpg";
 import tsunoda from "./images/yuki.jpg";
 import ricciardo from "./images/daniel.jpg";
 import albon from "./images/albon.jpg";
-//import sargeant from "./images/usa_logan.jpeg";
 import hulkenberg from "./images/nicoHulcamberg.jpg";
 import magnussen from "./images/magnusam.jpg";
-///import zhou from "./images/zhou-f1.jpg";
-///import bottas from "./images/valteri_77.png";
 
 const piloti = [
   { id: "verstappen", nume: "Max Verstappen", poza: max },
-  //{ id: "perez", nume: "Sergio Perez", poza: perez },
+  // { id: "perez", nume: "Sergio Perez", poza: perez },
   { id: "hamilton", nume: "Lewis Hamilton", poza: hamilton },
   { id: "russell", nume: "George Russell", poza: russell },
   { id: "leclerc", nume: "Charles Leclerc", poza: leclerc },
@@ -40,18 +40,26 @@ const piloti = [
   { id: "tsunoda", nume: "Yuki Tsunoda", poza: tsunoda },
   { id: "ricciardo", nume: "Daniel Ricciardo", poza: ricciardo },
   { id: "albon", nume: "Alex Albon", poza: albon },
-  ///{ id: "sargeant", nume: "Logan Sargeant", poza: sargeant },
   { id: "hulkenberg", nume: "Nico Hulkenberg", poza: hulkenberg },
   { id: "magnussen", nume: "Kevin Magnussen", poza: magnussen },
-  ///{ id: "zhou", nume: "Guanyu Zhou", poza: zhou },
-  ///{ id: "bottas", nume: "Valtteri Bottas", poza: bottas },
 ];
 
 export default function SelectarePilot() {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
-  const slot = location.state?.slot; // "left" sau "right"
+  const slot = location.state?.slot;
+
+  const { team } = useFavoriteTeam();
+  const teamStyles = {
+    "Red Bull": { color: "#4570C0" },
+    Ferrari: { color: "#D52E37" },
+    Mercedes: { color: "#75F0D3" },
+    McLaren: { color: "#FF8700" },
+    Haas: { color: "#555555" },
+    "Aston Martin": { color: "#006F62" },
+  };
+  const favoriteColor = teamStyles[team]?.color || "#d32f2f";
 
   const pilotiFiltrati = piloti.filter((pilot) =>
     pilot.nume.toLowerCase().includes(searchTerm.toLowerCase())
@@ -59,7 +67,10 @@ export default function SelectarePilot() {
 
   return (
     <div className={styles["selectare-container"]}>
-      <header className={styles["header"]}>
+      <header
+        className={styles["header"]}
+        style={{ backgroundColor: favoriteColor }}
+      >
         <h1>COMPARATIE PILOTI</h1>
       </header>
 
@@ -93,11 +104,16 @@ export default function SelectarePilot() {
         ))}
       </div>
 
-      <footer className={styles["footer"]}>
+      <footer
+        className={styles["footer"]}
+        style={{ backgroundColor: favoriteColor }}
+      >
         <Link to="/" className={styles["footer-button"]}>
-          PAGINA PRINCIPALA
+          <Home size={20} style={{ marginRight: "8px" }} />
         </Link>
-        <button className={styles["footer-button"]}>CLASAMENTE TRECUTE</button>
+        <Link to="/istoric" className={styles["footer-button"]}>
+          <Users size={20} style={{ marginRight: "8px" }} />
+        </Link>
       </footer>
     </div>
   );

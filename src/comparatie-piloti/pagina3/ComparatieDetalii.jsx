@@ -1,13 +1,30 @@
 import { useLocation, Link } from "react-router-dom";
+import { useFavoriteTeam } from "../../FavoriteTeamContext/FavoriteTeamContext";
 import styles from "./ComparatieDetalii.module.css";
 
 export default function ComparatieDetalii() {
   const location = useLocation();
   const { pilot1, pilot2 } = location.state || {};
 
+  //  obținem culoarea temei
+  const { team } = useFavoriteTeam();
+  const teamStyles = {
+    "Red Bull": { color: "#4570C0" },
+    Ferrari: { color: "#D52E37" },
+    Mercedes: { color: "#75F0D3" },
+    McLaren: { color: "#FF8700" },
+    Haas: { color: "#555555" },
+    "Aston Martin": { color: "#006F62" },
+  };
+  const favoriteColor = teamStyles[team]?.color || "#d32f2f";
+
   return (
     <div className={styles["comparatie-container"]}>
-      <header className={styles["header"]}>
+      {/*  colorăm header */}
+      <header
+        className={styles["header"]}
+        style={{ backgroundColor: favoriteColor }}
+      >
         <h1>COMPARATIE PILOTI</h1>
       </header>
 
@@ -34,29 +51,38 @@ export default function ComparatieDetalii() {
                 <p>
                   <strong>NR DE SEZOANE:</strong>
                 </p>
+                <p>-</p>
 
                 <p>
                   <strong>NR DE CURSE:</strong>
                 </p>
+                <p>-</p>
 
                 <p>
                   <strong>NR DE PODIUMURI:</strong>
                 </p>
+                <p>-</p>
 
                 <p>
                   <strong>CURSE CASTIGATE:</strong>
                 </p>
+                <p>-</p>
 
                 <p>
                   <strong>CAMPIONATE:</strong>
                 </p>
+                <p>-</p>
               </>
             )}
           </div>
         ))}
       </div>
 
-      <footer className={styles["footer"]}>
+      {/* colorăm footer */}
+      <footer
+        className={styles["footer"]}
+        style={{ backgroundColor: favoriteColor }}
+      >
         <Link to="/" className={styles["footer-button"]}>
           PAGINA PRINCIPALA
         </Link>

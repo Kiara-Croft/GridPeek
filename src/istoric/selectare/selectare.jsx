@@ -1,10 +1,23 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import styles from "./selectare.module.css";
 import { Users, Home } from "lucide-react";
+import styles from "./selectare.module.css";
+import { useFavoriteTeam } from "../../FavoriteTeamContext/FavoriteTeamContext";
 
 export default function Selectare() {
   const navigate = useNavigate();
+
+  //  context echipă + culoare
+  const { team } = useFavoriteTeam();
+  const teamStyles = {
+    "Red Bull": { color: "#4570C0" },
+    Ferrari: { color: "#D52E37" },
+    Mercedes: { color: "#75F0D3" },
+    McLaren: { color: "#FF8700" },
+    Haas: { color: "#555555" },
+    "Aston Martin": { color: "#006F62" },
+  };
+  const favoriteColor = teamStyles[team]?.color || "#d32f2f";
 
   // State pentru zona
   const [anZona, setAnZona] = useState("");
@@ -32,7 +45,11 @@ export default function Selectare() {
 
   return (
     <div className={styles.container}>
-      <header className={styles.header}>
+      {/* colorăm header */}
+      <header
+        className={styles.header}
+        style={{ backgroundColor: favoriteColor }}
+      >
         <h1>CLASAMENTE</h1>
       </header>
 
@@ -82,7 +99,11 @@ export default function Selectare() {
         </section>
       </div>
 
-      <footer className={styles.footer}>
+      {/*  colorăm footer */}
+      <footer
+        className={styles.footer}
+        style={{ backgroundColor: favoriteColor }}
+      >
         <Link to="/" className={styles["footer-button"]}>
           <Home size={20} style={{ marginRight: "8px" }} />
         </Link>
