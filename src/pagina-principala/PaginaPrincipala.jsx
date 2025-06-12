@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Users, History, Star } from "lucide-react";
+import { Users, History, Star, Home } from "lucide-react";
 import { useFavoriteTeam } from "../FavoriteTeamContext/FavoriteTeamContext"; // nou: context echipa favorită
 import "./PaginaPrincipala.css";
 
@@ -12,9 +12,13 @@ export default function PaginaPrincipala() {
     "Red Bull": { color: "#4570C0" },
     Ferrari: { color: "#D52E37" },
     Mercedes: { color: "#75F0D3" },
-    McLaren: { color: "#FF8700" },
-    Haas: { color: "#555555" },
-    "Aston Martin": { color: "#006F62" },
+    McLaren: { color: "#f47600" },
+    Haas: { color: "#9c9fa2" },
+    Alpine: { color: "#00a1e8" },
+    Williams: { color: "#1868db" },
+    "Kick Sauber": { color: "#01c00e" },
+    "Racing Bulls": { color: "#6c98ff" },
+    "Aston Martin": { color: "#229971" },
   };
 
   const favoriteColor = teamStyles[team]?.color || "#d32f2f"; // fallback: roșu standard
@@ -23,13 +27,13 @@ export default function PaginaPrincipala() {
     <div className="container">
       {/* Header */}
       <header className="header" style={{ backgroundColor: favoriteColor }}>
-        <h1>PAGINA PRINCIPALA</h1>
+        <h1>RACE RESULTS</h1>
       </header>
 
       <section className="info-cursa">
-        <span className="info-item">miami</span>
-        <span className="info-item">cursa</span>
-        <span className="info-item">12/57</span>
+        <span className="info-item">LOCATIE</span>
+        <span className="info-item">TIPUL DE SESIUNE</span>
+        <span className="info-item">TURURI PARCURSE/TURURI</span>
       </section>
 
       {/* Tabel */}
@@ -57,6 +61,18 @@ export default function PaginaPrincipala() {
 
       {/* Meniu jos */}
       <footer className="meniu-jos" style={{ backgroundColor: favoriteColor }}>
+        <div
+          style={{
+            display: "inline-block",
+            marginRight: "8px",
+            borderBottom: "3px solid #ffffff",
+            paddingBottom: "1px",
+            marginBottom: "1px",
+          }}
+        >
+          <Home size={20} style={{ color: "#ffffff" }} />
+        </div>
+
         <Link
           to="/comparatie"
           state={{ reset: true }}

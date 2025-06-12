@@ -11,6 +11,10 @@ export function FavoriteTeamProvider({ children }) {
     "McLaren",
     "Haas",
     "Aston Martin",
+    "Alpine",
+    "Williams",
+    "Kick Sauber",
+    "Racing Bulls",
   ];
 
   return (

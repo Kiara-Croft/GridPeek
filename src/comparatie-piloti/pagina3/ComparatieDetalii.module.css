@@ -1,41 +1,45 @@
 .comparatie-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh; /* Schimbat din min-height în height */
   font-family: sans-serif;
   background-color: white;
   color: black;
-  max-width: 400px;
-  margin: 0 auto;
-  border: 1px solid lightgray;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .header {
   background-color: #d32f2f;
   color: white;
-  padding: 15px;
+  padding: 20px;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .pilot-info-wrapper {
   display: flex;
-  justify-content: space-around;
-  gap: 20px;
-  padding: 20px;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 30px;
+  flex-wrap: nowrap;
+  height: 30px;
 }
 
 .pilot-card {
-  width: 45%;
+  width: 30%;
   text-align: center;
 }
 
 .pilot-poza {
   width: 100%;
-  max-height: 150px;
+  max-height: 200px;
   object-fit: contain;
   background-color: #ddd;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .footer {
@@ -43,19 +47,113 @@
   justify-content: space-around;
   background-color: #d32f2f;
   color: white;
-  padding: 10px 0;
+  padding: 15px; /* Am mărit puțin padding-ul vertical */
   margin-top: auto;
-}
-
-.footer-button {
-  background: none;
-  border: none;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  text-decoration: none;
+  width: 100%;
+  flex-shrink: 0;
 }
 
 p {
   margin-bottom: 35px;
+}
+
+/* MEDIA QUERY pentru TELEFON  */
+@media (max-width: 600px) {
+  .comparatie-container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .header {
+    height: 50px;
+    overflow: hidden;
+  }
+
+  .pilot-info-wrapper {
+    display: grid !important;
+    grid-template-areas:
+      "poza1 poza2"
+      "info1 info2";
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .pilot-poza-wrapper:first-child {
+    grid-area: poza1;
+  }
+
+  .pilot-poza-wrapper:last-child {
+    grid-area: poza2;
+  }
+
+  .pilot-info:first-child {
+    grid-area: info1;
+  }
+
+  .pilot-info:last-child {
+    grid-area: info2;
+  }
+
+  .pilot-card,
+  .pilot-poza-wrapper,
+  .pilot-info {
+    width: 100% !important;
+    margin: 0 !important;
+    float: none !important;
+  }
+
+  .pilot-poza {
+    width: 100%;
+    max-height: 120px;
+    object-fit: contain;
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1023px) {
+  .comparatie-container {
+    max-width: calc(100% - 2px);
+    height: calc(100vh - 2px);
+    padding: 0 60px;
+    border: none;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .pilot-info-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .pilot-poza-wrapper,
+  .pilot-info {
+    flex: 1;
+  }
+
+  .pilot-info {
+    text-align: left;
+  }
+
+  .pilot-poza {
+    max-height: 250px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+  }
+
+  .comparatie-container {
+    max-width: 100%;
+    padding: 0 60px;
+    border: none;
+  }
 }

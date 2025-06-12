@@ -1,69 +1,235 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  font-family: sans-serif;
-  background-color: white;
-  color: black;
-  max-width: 400px;
-  margin: 0 auto;
-  border: 1px solid lightgray;
+@media (max-width: 600px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: sans-serif;
+    background-color: white;
+    color: black;
+    max-width: 400px;
+    margin: 0 auto;
+    border: 1px solid lightgray;
+  }
+
+  .header {
+    background-color: #d32f2f;
+    color: white;
+    padding: 15px;
+    text-align: center;
+  }
+
+  .infoCursa {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .infoItem {
+    font-weight: bold;
+    text-transform: lowercase;
+  }
+
+  .tabelCursa {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+
+  .tabelCursa th,
+  .tabelCursa td {
+    border: none;
+    padding: 8px;
+    text-align: center;
+  }
+
+  .tabelCursa th {
+    background-color: #f2f2f2;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #d32f2f;
+    color: white;
+    padding: 10px 0;
+    margin-top: auto;
+  }
+
+  .footerButton {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+    background: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+  }
 }
 
-.header {
-  background-color: #d32f2f;
-  color: white;
-  padding: 15px;
-  text-align: center;
+@media (min-width: 601px) and (max-width: 1023px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: sans-serif;
+    max-width: 100%; /* Schimbat de la width fix la max-width */
+    width: 100%;
+    margin: 0 auto;
+    background-color: white;
+    color: black;
+    box-sizing: border-box;
+    padding: 0 15px; /* Adăugat padding lateral */
+  }
+
+  .header,
+  .footer {
+    width: 100vw; /* ocupă toată lățimea ecranului */
+    margin-left: -50vw; /* anulează orice padding/margin din container */
+    left: 50%;
+    position: relative; /* necesar pentru a funcționa corect */
+  }
+
+  .header {
+    background-color: #d32f2f;
+    color: white;
+    padding: 15px;
+    text-align: center;
+  }
+
+  .infoCursa {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .infoItem {
+    font-weight: bold;
+    text-transform: lowercase;
+  }
+
+  .tabelCursa {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+
+  .tabelCursa th,
+  .tabelCursa td {
+    border: none;
+    padding: 8px;
+    text-align: center;
+  }
+
+  .tabelCursa th {
+    background-color: #f2f2f2;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #d32f2f;
+    color: white;
+    padding: 10px 0;
+    margin-top: auto;
+  }
+
+  .footerButton {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+    background: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+  }
 }
 
-.infoCursa {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 10px;
-  font-size: 14px;
-}
+@media (min-width: 1024px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: sans-serif;
+    max-width: 100%; /* Schimbat de la width fix la max-width */
+    width: 100%;
+    margin: 0 auto;
+    background-color: white;
+    color: black;
+    box-sizing: border-box;
+    padding: 0 15px; /* Adăugat padding lateral */
+  }
 
-.infoItem {
-  font-weight: bold;
-  text-transform: lowercase;
-}
+  .header,
+  .footer {
+    width: 100vw; /* ocupă toată lățimea ecranului */
+    margin-left: -50vw; /* anulează orice padding/margin din container */
+    left: 50%;
+    position: relative; /* necesar pentru a funcționa corect */
+  }
 
-.tabelCursa {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
+  .header {
+    background-color: #d32f2f;
+    color: white;
+    padding: 15px;
+    text-align: center;
+  }
 
-.tabelCursa th,
-.tabelCursa td {
-  border: none;
-  padding: 8px;
-  text-align: center;
-}
+  .infoCursa {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    font-size: 14px;
+  }
 
-.tabelCursa th {
-  background-color: #f2f2f2;
-}
+  .infoItem {
+    font-weight: bold;
+    text-transform: lowercase;
+  }
 
-.footer {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #d32f2f;
-  color: white;
-  padding: 10px 0;
-  margin-top: auto;
-}
+  .tabelCursa {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
 
-.footerButton {
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  color: white;
-  background: none;
-  border: none;
-  text-decoration: none;
-  cursor: pointer;
+  .tabelCursa th,
+  .tabelCursa td {
+    border: none;
+    padding: 8px;
+    text-align: center;
+  }
+
+  .tabelCursa th {
+    background-color: #f2f2f2;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #d32f2f;
+    color: white;
+    padding: 10px 0;
+    margin-top: auto;
+  }
+
+  .footerButton {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+    background: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+  }
 }
