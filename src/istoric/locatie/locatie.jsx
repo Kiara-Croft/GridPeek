@@ -20,6 +20,7 @@ export default function Locatie() {
   };
 
   const favoriteColor = teamStyles[team]?.color || "#d32f2f"; // fallback: roșu standard
+
   return (
     <div className={styles.container}>
       {/* colorăm header */}
@@ -29,35 +30,30 @@ export default function Locatie() {
       >
         <h1>CLASAMENTUL PE ZONE</h1>
       </header>
-
-      <section className={styles.infoCursa}>
-        <span className={styles.infoItem}>miami</span>
-        <span className={styles.infoItem}>cursa</span>
-        <span className={styles.infoItem}>12/57</span>
-      </section>
-
-      {/* Tabel */}
-      <table className={styles.tabelCursa}>
-        <thead>
-          <tr>
-            <th>Pozitie</th>
-            <th>Nume</th>
-            <th>Timp</th>
-            <th>Puncte</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {[...Array(20)].map((_, i) => (
-            <tr key={i}>
-              <td>{i + 1}</td>
-              <td></td>
-              <td></td>
-              <td>{[25, 18, 15, 12, 10, 8, 6, 4, 2, 1][i] || 0}</td>
+      <div className={styles["glass-box"]}>
+        {/* Tabel */}
+        <table className={styles.tabelCursa}>
+          <thead>
+            <tr>
+              <th>Pozitie</th>
+              <th>Nume</th>
+              <th>Timp</th>
+              <th>Puncte</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            {[...Array(20)].map((_, i) => (
+              <tr key={i}>
+                <td>{i + 1}</td>
+                <td></td>
+                <td></td>
+                <td>{[25, 18, 15, 12, 10, 8, 6, 4, 2, 1][i] || 0}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       {/*  colorăm footer */}
       <footer

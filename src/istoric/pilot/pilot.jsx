@@ -37,34 +37,26 @@ export default function Pilot() {
       >
         <h1>CLASAMENTE TRECUTE</h1>
       </header>
-
-      <section className={styles.info}>
-        <div>
-          <strong>AN ALES:</strong> {an}
-        </div>
-        <div>
-          <strong>PILOT:</strong> {pilot.toUpperCase()}
-        </div>
-      </section>
-
-      <table className={styles.tabel}>
-        <thead>
-          <tr>
-            <th>CURSA</th>
-            <th>LOCUL</th>
-            <th>NUMAR DE PUNCTE</th>
-          </tr>
-        </thead>
-        <tbody>
-          {curse.map((cursa, index) => (
-            <tr key={index}>
-              <td>{cursa.nume}</td>
-              <td>{cursa.loc}</td>
-              <td>{cursa.puncte}</td>
+      <div className={styles["glass-box"]}>
+        <table className={styles.tabel}>
+          <thead>
+            <tr>
+              <th>CURSA</th>
+              <th>LOCUL</th>
+              <th>NUMAR DE PUNCTE</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {curse.map((cursa, index) => (
+              <tr key={index}>
+                <td>{cursa.nume}</td>
+                <td>{cursa.loc}</td>
+                <td>{cursa.puncte}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       {/* colorăm footer */}
       <footer

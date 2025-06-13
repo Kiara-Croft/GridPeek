@@ -31,90 +31,92 @@ export default function ComparatieDetalii() {
         className={styles["header"]}
         style={{ backgroundColor: favoriteColor }}
       >
-        <h1>COMPARATIE PILOTI</h1>
+        <h1 className={styles["h1"]}> COMPARATIE PILOTI</h1>
       </header>
 
-      <div className={styles["pilot-info-wrapper"]}>
-        {/* Poza pilot 1 */}
-        <div className={styles["pilot-poza-wrapper"]}>
-          <img
-            src={pilot1.poza}
-            alt={pilot1.nume}
-            className={styles["pilot-poza"]}
-          />
-        </div>
+      <div className={styles["glass-box"]}>
+        <div className={styles["pilot-info-wrapper"]}>
+          {/* Poza pilot 1 */}
+          <div className={styles["pilot-poza-wrapper"]}>
+            <img
+              src={pilot1.poza}
+              alt={pilot1.nume}
+              className={styles["pilot-poza"]}
+            />
+          </div>
 
-        {/* Info pilot 1 */}
-        <div className={styles["pilot-info"]}>
-          <p>
-            <strong>NUME:</strong>
-          </p>
-          <p>{pilot1.nume}</p>
-          <p>
-            <strong>ECHIPA:</strong>
-          </p>
-          <p>Echipa X</p>
-          <p>
-            <strong>NR DE SEZOANE:</strong>
-          </p>
-          <p>-</p>
-          <p>
-            <strong>NR DE CURSE:</strong>
-          </p>
-          <p>-</p>
-          <p>
-            <strong>NR DE PODIUMURI:</strong>
-          </p>
-          <p>-</p>
-          <p>
-            <strong>CURSE CASTIGATE:</strong>
-          </p>
-          <p>-</p>
-          <p>
-            <strong>CAMPIONATE:</strong>
-          </p>
-          <p>-</p>
-        </div>
+          {/* Info pilot 1 */}
+          <div className={styles["pilot-info"]}>
+            <p>
+              <strong>NUME:</strong>
+            </p>
+            <p>{pilot1.nume}</p>
+            <p>
+              <strong>ECHIPA:</strong>
+            </p>
+            <p>Echipa X</p>
+            <p>
+              <strong>SEZOANE:</strong>
+            </p>
+            <p>-</p>
+            <p>
+              <strong>CURSE:</strong>
+            </p>
+            <p>-</p>
+            <p>
+              <strong>PODIUMURI:</strong>
+            </p>
+            <p>-</p>
+            <p>
+              <strong>WINS:</strong>
+            </p>
+            <p>-</p>
+            <p>
+              <strong>CAMPIONATE:</strong>
+            </p>
+            <p>-</p>
+          </div>
 
-        {/* Info pilot 2 */}
-        <div className={styles["pilot-info"]}>
-          <p>
-            <strong>NUME:</strong>
-          </p>
-          <p>{pilot2.nume}</p>
-          <p>
-            <strong>ECHIPA:</strong>
-          </p>
-          <p>Echipa Y</p>
-          <p>
-            <strong>NR DE SEZOANE:</strong>
-          </p>
-          <p>-</p>
-          <p>
-            <strong>NR DE CURSE:</strong>
-          </p>
-          <p>-</p>
-          <p>
-            <strong>NR DE PODIUMURI:</strong>
-          </p>
-          <p>-</p>
-          <p>
-            <strong>CURSE CASTIGATE:</strong>
-          </p>
-          <p>-</p>
-          <p>
-            <strong>CAMPIONATE:</strong>
-          </p>
-          <p>-</p>
-        </div>
+          {/* Info pilot 2 */}
+          <div className={styles["pilot-info"]}>
+            <p>
+              <strong>NUME:</strong>
+            </p>
+            <p>{pilot2.nume}</p>
+            <p>
+              <strong>ECHIPA:</strong>
+            </p>
+            <p>Echipa Y</p>
+            <p>
+              <strong>SEZOANE:</strong>
+            </p>
+            <p>-</p>
+            <p>
+              <strong>CURSE:</strong>
+            </p>
+            <p>-</p>
+            <p>
+              <strong>PODIUMURI:</strong>
+            </p>
+            <p>-</p>
+            <p>
+              <strong>WINS:</strong>
+            </p>
+            <p>-</p>
+            <p>
+              <strong>CAMPIONATE:</strong>
+            </p>
+            <p>-</p>
+          </div>
 
-        {/* Poza pilot 2 */}
-        <div className={styles["pilot-poza-wrapper"]}>
-          <img
-            src={pilot2.poza}
-            alt={pilot2.nume}
-            className={styles["pilot-poza"]}
-          />
+          {/* Poza pilot 2 */}
+          <div className={styles["pilot-poza-wrapper"]}>
+            <img
+              src={pilot2.poza}
+              alt={pilot2.nume}
+              className={styles["pilot-poza"]}
+            />
+          </div>
         </div>
       </div>
 

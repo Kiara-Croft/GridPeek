@@ -62,7 +62,7 @@ export default function SelectarePilot() {
     "Aston Martin": "#229971",
   };
 
-  const favoriteColor = teamStyles[team] || "#d32f2f";
+  const favoriteColor = teamStyles[team] || "#e31800";
 
   const pilotiFiltrati = piloti.filter((pilot) =>
     pilot.nume.toLowerCase().includes(searchTerm.toLowerCase())

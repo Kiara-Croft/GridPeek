@@ -21,7 +21,7 @@ export default function PaginaPrincipala() {
     "Aston Martin": { color: "#229971" },
   };
 
-  const favoriteColor = teamStyles[team]?.color || "#d32f2f"; // fallback: roșu standard
+  const favoriteColor = teamStyles[team]?.color || "#e31800"; // fallback: roșu standard
 
   return (
     <div className="container">
@@ -30,37 +30,38 @@ export default function PaginaPrincipala() {
         <h1>RACE RESULTS</h1>
       </header>
 
-      <section className="info-cursa">
-        <span className="info-item">LOCATIE</span>
-        <span className="info-item">TIPUL DE SESIUNE</span>
-        <span className="info-item">TURURI PARCURSE/TURURI</span>
-      </section>
+      <div className="glass-box">
+        <section className="info-cursa">
+          <span className="info-item">LOCATIE</span>
+          <span className="info-item">TIPUL DE SESIUNE</span>
+          <span className="info-item">TURURI PARCURSE/TURURI</span>
+        </section>
 
-      {/* Tabel */}
-      <table className="tabel-cursa">
-        <thead>
-          <tr>
-            <th>Pozitie</th>
-            <th>Nume</th>
-            <th>Timp</th>
-            <th>Puncte</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {[...Array(20)].map((_, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td></td>
-              <td></td>
-              <td>{[25, 18, 15, 12, 10, 8, 6, 4, 2, 1][index] || 0}</td>
+        <table className="tabel-cursa">
+          <thead>
+            <tr>
+              <th>Pozitie</th>
+              <th>Nume</th>
+              <th>Timp</th>
+              <th>Puncte</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            {[...Array(20)].map((_, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td></td>
+                <td></td>
+                <td>{[25, 18, 15, 12, 10, 8, 6, 4, 2, 1][index] || 0}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       {/* Meniu jos */}
-      <footer className="meniu-jos" style={{ backgroundColor: favoriteColor }}>
+      <footer className="footer" style={{ backgroundColor: favoriteColor }}>
         <div
           style={{
             display: "inline-block",

@@ -3,19 +3,34 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: sans-serif;
-    background-color: white;
-    color: black;
-    max-width: 400px;
+    font-family: "Orbitron", sans-serif;
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+
     margin: 0 auto;
     border: 1px solid lightgray;
+    background-image: url("./background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   .header {
-    background-color: #d32f2f;
-    color: white;
+    left: 0;
+    right: 0;
+    width: 100%;
+    position: fixed;
+    background-color: #6a006a;
+    background: rgba(128, 0, 128, 0.35); /* mov transparent */
+    backdrop-filter: blur(12px);
+    border-radius: 50px;
     padding: 15px;
     text-align: center;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    box-shadow: 0 -4px 15px rgba(168, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    z-index: 1000;
   }
 
   .infoCursa {
@@ -32,9 +47,10 @@
   }
 
   .tabelCursa {
+    margin-top: 110px;
+    margin-bottom: 60px;
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
   }
 
   .tabelCursa th,
@@ -45,17 +61,27 @@
   }
 
   .tabelCursa th {
-    background-color: #f2f2f2;
+    background-color: transparent;
   }
 
   .footer {
+    border-radius: 50px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: -1px;
+    height: 60px;
+    background: #a22fd3;
+    background-size: 600% 600%;
+    animation: gentleWave 12s ease-in-out infinite;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #d32f2f;
     color: white;
-    padding: 10px 0;
-    margin-top: auto;
+    font-weight: bold;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 -4px 15px rgba(168, 0, 0, 0.5);
+    z-index: 1000;
   }
 
   .footerButton {
@@ -75,29 +101,34 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: sans-serif;
-    max-width: 100%; /* Schimbat de la width fix la max-width */
-    width: 100%;
-    margin: 0 auto;
-    background-color: white;
-    color: black;
-    box-sizing: border-box;
-    padding: 0 15px; /* Adăugat padding lateral */
-  }
+    font-family: "Orbitron", sans-serif;
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
 
-  .header,
-  .footer {
-    width: 100vw; /* ocupă toată lățimea ecranului */
-    margin-left: -50vw; /* anulează orice padding/margin din container */
-    left: 50%;
-    position: relative; /* necesar pentru a funcționa corect */
+    margin: 0 auto;
+    border: 1px solid lightgray;
+    background-image: url("./background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   .header {
-    background-color: #d32f2f;
-    color: white;
+    left: 0;
+    right: 0;
+    width: 100%;
+    position: fixed;
+    background-color: #6a006a;
+    background: rgba(128, 0, 128, 0.35); /* mov transparent */
+    backdrop-filter: blur(12px);
+    border-radius: 50px;
     padding: 15px;
     text-align: center;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    box-shadow: 0 -4px 15px rgba(168, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    z-index: 1000;
   }
 
   .infoCursa {
@@ -116,7 +147,6 @@
   .tabelCursa {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
   }
 
   .tabelCursa th,
@@ -127,19 +157,27 @@
   }
 
   .tabelCursa th {
-    background-color: #f2f2f2;
+    background-color: transparent;
   }
-
   .footer {
+    border-radius: 50px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: -1px;
+    height: 60px;
+    background: #a22fd3;
+    background-size: 600% 600%;
+    animation: gentleWave 12s ease-in-out infinite;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #d32f2f;
     color: white;
-    padding: 10px 0;
-    margin-top: auto;
+    font-weight: bold;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 -4px 15px rgba(168, 0, 0, 0.5);
+    z-index: 1000;
   }
-
   .footerButton {
     display: flex;
     align-items: center;
@@ -149,6 +187,19 @@
     border: none;
     text-decoration: none;
     cursor: pointer;
+  }
+  .glass-box {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: 200px;
+    margin-right: 200px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
   }
 }
 
@@ -157,29 +208,34 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: sans-serif;
-    max-width: 100%; /* Schimbat de la width fix la max-width */
-    width: 100%;
-    margin: 0 auto;
-    background-color: white;
-    color: black;
-    box-sizing: border-box;
-    padding: 0 15px; /* Adăugat padding lateral */
-  }
+    font-family: "Orbitron", sans-serif;
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
 
-  .header,
-  .footer {
-    width: 100vw; /* ocupă toată lățimea ecranului */
-    margin-left: -50vw; /* anulează orice padding/margin din container */
-    left: 50%;
-    position: relative; /* necesar pentru a funcționa corect */
+    margin: 0 auto;
+    border: 1px solid lightgray;
+    background-image: url("./background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   .header {
-    background-color: #d32f2f;
-    color: white;
+    left: 0;
+    right: 0;
+    width: 100%;
+    position: fixed;
+    background-color: #6a006a;
+    background: rgba(128, 0, 128, 0.35); /* mov transparent */
+    backdrop-filter: blur(12px);
+    border-radius: 50px;
     padding: 15px;
     text-align: center;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    box-shadow: 0 -4px 15px rgba(168, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    z-index: 1000;
   }
 
   .infoCursa {
@@ -209,17 +265,27 @@
   }
 
   .tabelCursa th {
-    background-color: #f2f2f2;
+    background-color: transparent;
   }
 
   .footer {
+    border-radius: 50px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: -1px;
+    height: 60px;
+    background: #a22fd3;
+    background-size: 600% 600%;
+    animation: gentleWave 12s ease-in-out infinite;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #d32f2f;
     color: white;
-    padding: 10px 0;
-    margin-top: auto;
+    font-weight: bold;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 -4px 15px rgba(168, 0, 0, 0.5);
+    z-index: 1000;
   }
 
   .footerButton {
@@ -231,5 +297,19 @@
     border: none;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  .glass-box {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: 200px;
+    margin-right: 200px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
   }
 }

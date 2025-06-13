@@ -78,47 +78,50 @@ export default function ComparatiePiloti() {
         className={styles["header"]}
         style={{ backgroundColor: favoriteColor }}
       >
-        <h1>COMPARATIE PILOTI</h1>
+        <h1 className={styles["h1"]}>COMPARATIE PILOTI</h1>
       </header>
 
-      <div className={styles["plus-wrapper"]}>
-        {pilot1 ? (
-          <div className={styles["pilot-box"]}>
-            <img
-              src={pilot1.poza}
-              alt={pilot1.nume}
-              className={styles["pilot-poza"]}
-            />
-            <p>{pilot1.nume}</p>
-          </div>
-        ) : (
-          <Link
-            to="/pagina2"
-            state={{ slot: "left" }}
-            className={styles["plus-box"]}
-          >
-            +
-          </Link>
-        )}
+      <div className={styles["glass-box"]}>
+        {" "}
+        <div className={styles["plus-wrapper"]}>
+          {pilot1 ? (
+            <div className={styles["pilot-box"]}>
+              <img
+                src={pilot1.poza}
+                alt={pilot1.nume}
+                className={styles["pilot-poza"]}
+              />
+              <p className={styles["pilot-nume"]}>{pilot1.nume}</p>
+            </div>
+          ) : (
+            <Link
+              to="/pagina2"
+              state={{ slot: "left" }}
+              className={styles["plus-box"]}
+            >
+              +
+            </Link>
+          )}
 
-        {pilot2 ? (
-          <div className={styles["pilot-box"]}>
-            <img
-              src={pilot2.poza}
-              alt={pilot2.nume}
-              className={styles["pilot-poza"]}
-            />
-            <p>{pilot2.nume}</p>
-          </div>
-        ) : (
-          <Link
-            to="/pagina2"
-            state={{ slot: "right" }}
-            className={styles["plus-box"]}
-          >
-            +
-          </Link>
-        )}
+          {pilot2 ? (
+            <div className={styles["pilot-box"]}>
+              <img
+                src={pilot2.poza}
+                alt={pilot2.nume}
+                className={styles["pilot-poza"]}
+              />
+              <p className={styles["pilot-nume"]}>{pilot2.nume}</p>
+            </div>
+          ) : (
+            <Link
+              to="/pagina2"
+              state={{ slot: "right" }}
+              className={styles["plus-box"]}
+            >
+              +
+            </Link>
+          )}
+        </div>
       </div>
 
       <div className={styles["extra-buttons"]}>

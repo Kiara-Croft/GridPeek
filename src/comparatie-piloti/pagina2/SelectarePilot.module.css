@@ -5,16 +5,27 @@
   background: #fefefe;
   overflow: hidden;
   position: relative;
+  background-image: url("./background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .header {
-  height: 60px;
-  background: #d52e37;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  z-index: 100;
+  left: 0;
+  right: 0;
+  width: 100%;
+  position: fixed;
+  background-color: #e31800;
+  backdrop-filter: blur(12px);
+  border-radius: 50px;
+  padding: 15px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  box-shadow: 0 -4px 15px rgba(168, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  z-index: 1000;
 }
 
 .header h1 {
@@ -54,17 +65,23 @@
 }
 
 .navbar {
+  border-radius: 50px;
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100%;
-  background: #d52e37;
+  right: -1px;
+  height: 60px;
+  background: #e31800;
+  background-size: 600% 600%;
+  animation: gentleWave 12s ease-in-out infinite;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap: 30px;
-  padding: 10px 0;
-  z-index: 100;
+  color: white;
+  font-weight: bold;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 -4px 15px rgba(168, 0, 0, 0.5);
+  z-index: 1000;
 }
 
 .nav-button {
@@ -107,7 +124,7 @@
   width: 360px;
   height: 460px;
   border-radius: 15px;
-  background: white;
+  background: #e31800;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: all 0.4s ease;
@@ -126,14 +143,14 @@
 }
 
 .pilot-nume {
+  display: flex;
+  justify-content: center;
   padding: 15px;
   font-weight: 600;
   font-size: 1.1rem;
-  color: #333;
-  text-align: center;
+  color: #ffffff;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .footer {

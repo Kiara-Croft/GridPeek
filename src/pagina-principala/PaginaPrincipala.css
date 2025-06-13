@@ -1,155 +1,389 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  font-family: sans-serif;
-  background-color: white;
-  color: black;
-  max-width: 400px;
-  margin: 0 auto;
-  border: 1px solid lightgray;
-}
-
-.header {
-  position: relative;
-  background-color: #d32f2f;
-  color: white;
-  padding: 15px;
-  text-align: center;
-}
-
-.menu-icon {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 20px;
-}
-
-.info-cursa {
-  text-align: center;
-  padding: 10px;
-}
-
-.text-small {
-  margin: 2px 0;
-  font-size: 14px;
-}
-
-.tabel-cursa {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-
-.tabel-cursa th,
-.tabel-cursa td {
-  border: none;
-  padding: 8px;
-  text-align: center;
-}
-
-.tabel-cursa th {
-  background-color: #f2f2f2;
-}
-
-.meniu-jos {
-  display: flex;
-  justify-content: space-around;
-  background-color: #d32f2f;
-  color: white;
-  padding: 10px 0;
-  margin-top: auto;
-}
-
-.meniu-jos button {
-  background: none;
-  border: none;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.info-cursa {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 10px;
-  font-size: 14px;
-}
-
-.info-item {
-  font-weight: bold;
-  text-transform: lowercase;
-}
-
-.header h1 {
-  font-size: 16px;
-  font-weight: normal;
-  text-transform: uppercase;
-  margin: 0;
-}
-
-.meniu-jos {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #d32f2f;
-  padding: 10px 0;
-}
-
-.footer-button {
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  color: white;
-  background: none;
-  border: none;
-  text-decoration: none;
-}
-
-.dropdown-echipe {
-  position: absolute;
-  bottom: 40px; /* apare deasupra butonului */
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: white;
-  color: black;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 5px 0;
-  width: 140px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  z-index: 10;
-}
-
-.echipa-item {
-  padding: 8px 12px;
-  cursor: pointer;
-  text-align: center;
-}
-
-.echipa-item:hover {
-  background-color: #f2f2f2;
-}
-
-@media (min-width: 768px) {
+@media (max-width: 600px) {
   .container {
-    max-width: 100%;
-    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: "Orbitron", sans-serif;
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    margin: 0 auto;
+    border: 1px solid lightgray;
+    background-image: url("./background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
-  .header,
-  .meniu-jos {
-    width: 100vw; /* ocupă toată lățimea ecranului */
-    margin-left: -50vw; /* anulează orice padding/margin din container */
-    left: 50%;
-    position: relative; /* necesar pentru a funcționa corect */
+  .header {
+    left: 0;
+    right: 0;
+    width: 100%;
+    position: fixed;
+    background-color: #6a006a;
+    background: rgba(128, 0, 128, 0.35); /* mov transparent */
+    backdrop-filter: blur(12px);
+    border-radius: 50px;
+    padding: 15px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    box-shadow: 0 -4px 15px rgba(168, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    z-index: 1000;
   }
-  /* Mută tabelul în stânga */
+
+  .info-cursa {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .info-item {
+    font-weight: bold;
+    text-transform: lowercase;
+  }
+
   .tabel-cursa {
-    width: 50%;
-    margin-right: auto; /* Aliniere la stânga */
-    margin-left: 0;
+    margin-top: 30px;
+    margin-bottom: 60px;
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .tabel-cursa th,
+  .tabel-cursa td {
+    border: none;
+    padding: 8px;
+    text-align: center;
+  }
+
+  .tabel-cursa th {
+    background-color: transparent;
+  }
+
+  .footer {
+    border-radius: 50px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: -1px;
+    height: 60px;
+    background: #a22fd3;
+    background-size: 600% 600%;
+    animation: gentleWave 12s ease-in-out infinite;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 -4px 15px rgba(168, 0, 0, 0.5);
+    z-index: 1000;
+  }
+
+  .footer-button {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+    background: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .dropdown-echipe {
+    position: absolute;
+    bottom: 40px; /* apare deasupra butonului */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 5px 0;
+    width: 140px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+  }
+
+  .echipa-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .echipa-item:hover {
+    background-color: #f2f2f2;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1023px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: "Orbitron", sans-serif;
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+
+    margin: 0 auto;
+    border: 1px solid lightgray;
+    background-image: url("./background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .header {
+    left: 0;
+    right: 0;
+    width: 100%;
+    position: fixed;
+    background-color: #6a006a;
+    background: rgba(128, 0, 128, 0.35); /* mov transparent */
+    backdrop-filter: blur(12px);
+    border-radius: 50px;
+    padding: 15px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    box-shadow: 0 -4px 15px rgba(168, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
+
+  .info-cursa {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .info-item {
+    font-weight: bold;
+    text-transform: lowercase;
+  }
+
+  .tabel-cursa {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .tabel-cursa th,
+  .tabel-cursa td {
+    border: none;
+    padding: 8px;
+    text-align: center;
+  }
+
+  .tabel-cursa th {
+    background-color: transparent;
+  }
+  .footer {
+    border-radius: 50px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: -1px;
+    height: 60px;
+    background: #a22fd3;
+    background-size: 600% 600%;
+    animation: gentleWave 12s ease-in-out infinite;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 -4px 15px rgba(168, 0, 0, 0.5);
+    z-index: 1000;
+  }
+  .footer-button {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+    background: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .glass-box {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .dropdown-echipe {
+    position: absolute;
+    bottom: 40px; /* apare deasupra butonului */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 5px 0;
+    width: 140px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+  }
+
+  .echipa-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .echipa-item:hover {
+    background-color: #f2f2f2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: "Orbitron", sans-serif;
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+
+    margin: 0 auto;
+    border: 1px solid lightgray;
+    background-image: url("./background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .header {
+    left: 0;
+    right: 0;
+    width: 100%;
+    position: fixed;
+    background-color: #6a006a;
+    background: rgba(128, 0, 128, 0.35); /* mov transparent */
+    backdrop-filter: blur(12px);
+    border-radius: 50px;
+    padding: 15px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    box-shadow: 0 -4px 15px rgba(168, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
+
+  .info-cursa {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .info-item {
+    font-weight: bold;
+    text-transform: lowercase;
+  }
+
+  .tabel-cursa {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+
+  .tabel-cursa th,
+  .tabel-cursa td {
+    border: none;
+    padding: 8px;
+    text-align: center;
+  }
+
+  .tabel-cursa th {
+    background-color: transparent;
+  }
+
+  .footer {
+    border-radius: 50px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: -1px;
+    height: 60px;
+    background: #a22fd3;
+    background-size: 600% 600%;
+    animation: gentleWave 12s ease-in-out infinite;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 -4px 15px rgba(168, 0, 0, 0.5);
+    z-index: 1000;
+  }
+
+  .footer-button {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+    background: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .glass-box {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: 200px;
+    margin-right: 200px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .dropdown-echipe {
+    position: absolute;
+    bottom: 40px; /* apare deasupra butonului */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 5px 0;
+    width: 140px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+  }
+
+  .echipa-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .echipa-item:hover {
+    background-color: #f2f2f2;
   }
 }
