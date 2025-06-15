@@ -46,6 +46,7 @@
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    color: #ffffff;
   }
 
   .tabel th,
@@ -57,6 +58,10 @@
 
   .tabel th {
     background-color: #f2f2f2;
+  }
+
+  .tbody {
+    color: rgb(255, 255, 255);
   }
 
   .footer {
@@ -139,6 +144,7 @@
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    color: #ffffff;
   }
 
   .tabel th,
@@ -151,6 +157,10 @@
   .tabel th {
     background-color: transparent;
     color: white;
+  }
+
+  .tbody {
+    color: rgb(255, 255, 255);
   }
 
   .footer {
@@ -247,6 +257,7 @@
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    color: rgb(255, 255, 255);
   }
 
   .tabel th,
@@ -260,7 +271,9 @@
     background-color: transparent;
     color: rgb(255, 255, 255);
   }
-
+  .tbody {
+    color: rgb(255, 255, 255);
+  }
   .footer {
     border-radius: 50px;
     position: fixed;

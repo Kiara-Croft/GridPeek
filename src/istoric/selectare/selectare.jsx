@@ -92,7 +92,7 @@ export default function Selectare() {
           />
           <input
             type="text"
-            placeholder="Ex: max verstappen"
+            placeholder="Ex: fernando alonso"
             value={pilot}
             onChange={(e) => setPilot(e.target.value)}
             className={styles.input}

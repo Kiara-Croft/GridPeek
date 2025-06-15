@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Users, History, Star, Home } from "lucide-react";
-import { useFavoriteTeam } from "../FavoriteTeamContext/FavoriteTeamContext"; // nou: context echipa favorită
+import { useFavoriteTeam } from "../FavoriteTeamContext/FavoriteTeamContext";
 import "./PaginaPrincipala.css";
 
 export default function PaginaPrincipala() {
   const [showDropdown, setShowDropdown] = useState(false);
-  const { team, setTeam, teams } = useFavoriteTeam(); // nou: hook context echipe
+  const { team, setTeam, teams } = useFavoriteTeam();
+  const [raceData, setRaceData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const teamStyles = {
     "Red Bull": { color: "#4570C0" },
@@ -21,46 +24,100 @@ export default function PaginaPrincipala() {
     "Aston Martin": { color: "#229971" },
   };
 
-  const favoriteColor = teamStyles[team]?.color || "#e31800"; // fallback: roșu standard
+  useEffect(() => {
+    const fetchLatestRace = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(
+          "/api/ergast/f1/current/last/results.json"
+        );
+        // Atenție la path: începe cu /api/ ca să fie prins de proxy-ul Netlify/Vite
+
+        if (!response.ok) {
+          throw new Error("Nu s-au putut încărca datele");
+        }
+
+        const data = await response.json();
+
+        if (data.MRData.RaceTable.Races.length > 0) {
+          const race = data.MRData.RaceTable.Races[0];
+          setRaceData({
+            location: `${race.Circuit.Location.locality}, ${race.Circuit.Location.country}`,
+            laps: `${race.Results[0].laps}/${race.Results[0].laps}`,
+            raceName: race.raceName,
+            results: race.Results,
+          });
+        }
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLatestRace();
+  }, []);
+
+  const favoriteColor = teamStyles[team]?.color || "#e31800";
 
   return (
     <div className="container">
-      {/* Header */}
       <header className="header" style={{ backgroundColor: favoriteColor }}>
         <h1>RACE RESULTS</h1>
       </header>
 
       <div className="glass-box">
-        <section className="info-cursa">
-          <span className="info-item">LOCATIE</span>
-          <span className="info-item">TIPUL DE SESIUNE</span>
-          <span className="info-item">TURURI PARCURSE/TURURI</span>
-        </section>
+        {loading ? (
+          <div className="loading-message">Se încarcă datele...</div>
+        ) : error ? (
+          <div className="error-message">
+            {error}
+            <button
+              onClick={() => window.location.reload()}
+              className="retry-button"
+            >
+              Reîncarcă
+            </button>
+          </div>
+        ) : raceData ? (
+          <>
+            <h2 className="race-title">{raceData.raceName}</h2>
+            <section className="info-cursa">
+              <span className="info-item">{raceData.location}</span>
+              <span className="info-item">Cursă</span>
+              <span className="info-item">{raceData.laps}</span>
+            </section>
 
-        <table className="tabel-cursa">
-          <thead>
-            <tr>
-              <th>Pozitie</th>
-              <th>Nume</th>
-              <th>Timp</th>
-              <th>Puncte</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {[...Array(20)].map((_, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td></td>
-                <td></td>
-                <td>{[25, 18, 15, 12, 10, 8, 6, 4, 2, 1][index] || 0}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+            <table className="tabel-cursa">
+              <thead>
+                <tr>
+                  <th>Pozitie</th>
+                  <th>Nume</th>
+                  <th>Timp</th>
+                  <th>Puncte</th>
+                </tr>
+              </thead>
+              <tbody>
+                {raceData.results.map((result) => (
+                  <tr key={result.position}>
+                    <td>{result.position}</td>
+                    <td>
+                      {result.Driver.givenName} {result.Driver.familyName}
+                      <br />
+                      <small>{result.Constructor.name}</small>
+                    </td>
+                    <td>{result.Time?.time || result.status}</td>
+                    <td>{result.points}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
+        ) : (
+          <div className="no-data">Nu sunt date disponibile</div>
+        )}
       </div>
 
-      {/* Meniu jos */}
       <footer className="footer" style={{ backgroundColor: favoriteColor }}>
         <div
           style={{
@@ -86,7 +143,6 @@ export default function PaginaPrincipala() {
           <History size={20} style={{ marginRight: "8px" }} />
         </Link>
 
-        {/* e noua bucata: dropdown echipă favorită */}
         <div style={{ position: "relative" }}>
           <button
             className="footer-button"

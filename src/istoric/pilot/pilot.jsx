@@ -1,14 +1,14 @@
 import { useLocation, Link } from "react-router-dom";
 import { Users, Home, History } from "lucide-react";
 import styles from "./pilot.module.css";
-import { useFavoriteTeam } from "../../FavoriteTeamContext/FavoriteTeamContext"; //
+import { useFavoriteTeam } from "../../FavoriteTeamContext/FavoriteTeamContext";
 
 export default function Pilot() {
   const location = useLocation();
-  const an = location.state?.an || "NECUNOSCUT";
-  const pilot = location.state?.pilot || "NECUNOSCUT";
+  const an = location.state?.an || "Se asteapta datele incearca un alt pilot ";
+  const pilot =
+    location.state?.pilot || "Se asteapta datele incearca alt pilot ";
 
-  //  Tema bazată pe echipa favorită
   const { team } = useFavoriteTeam();
   const teamStyles = {
     "Red Bull": { color: "#4570C0" },
@@ -23,20 +23,40 @@ export default function Pilot() {
     "Aston Martin": { color: "#229971" },
   };
 
-  const favoriteColor = teamStyles[team]?.color || "#d32f2f"; // fallback: roșu standard
+  const favoriteColor = teamStyles[team]?.color || "#d32f2f";
 
-  // Date hardcodate temporar (vor fi din API)
-  const curse = [];
+  // Datele lui Alonso 2010
+  const curse = [
+    { nume: "Bahrain", loc: "1", puncte: 25 },
+    { nume: "Australia", loc: "4", puncte: 12 },
+    { nume: "Malaezia", loc: " DNF", puncte: 0 },
+    { nume: "China", loc: "4", puncte: 12 },
+    { nume: "Spania", loc: "2", puncte: 18 },
+    { nume: "Monaco", loc: "6", puncte: 8 },
+    { nume: "Turcia", loc: "8", puncte: 4 },
+    { nume: "Canada", loc: "3", puncte: 15 },
+    { nume: "Europa (Valencia)", loc: "8", puncte: 4 },
+    { nume: "Marea Britanie", loc: "14", puncte: 0 },
+    { nume: "Germania", loc: "1", puncte: 25 },
+    { nume: "Ungaria", loc: "2", puncte: 18 },
+    { nume: "Belgia", loc: "DNF", puncte: 0 },
+    { nume: "Italia", loc: "1", puncte: 25 },
+    { nume: "Singapore", loc: "1", puncte: 25 },
+    { nume: "Japonia", loc: "3", puncte: 15 },
+    { nume: "Coreea de Sud", loc: "1", puncte: 25 },
+    { nume: "Brazilia", loc: "3", puncte: 15 },
+    { nume: "Abu Dhabi", loc: "7", puncte: 6 },
+  ];
 
   return (
     <div className={styles.container}>
-      {/* colorăm header */}
       <header
         className={styles.header}
         style={{ backgroundColor: favoriteColor }}
       >
         <h1>CLASAMENTE TRECUTE</h1>
       </header>
+
       <div className={styles["glass-box"]}>
         <table className={styles.tabel}>
           <thead>
@@ -46,7 +66,7 @@ export default function Pilot() {
               <th>NUMAR DE PUNCTE</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className={styles["tbody"]}>
             {curse.map((cursa, index) => (
               <tr key={index}>
                 <td>{cursa.nume}</td>
@@ -58,7 +78,6 @@ export default function Pilot() {
         </table>
       </div>
 
-      {/* colorăm footer */}
       <footer
         className={styles.footer}
         style={{ backgroundColor: favoriteColor }}

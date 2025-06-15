@@ -1,13 +1,17 @@
+import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { useFavoriteTeam } from "../../FavoriteTeamContext/FavoriteTeamContext";
-import { Home, History, Trash, Users } from "lucide-react";
+import { Home, History, Users } from "lucide-react";
 import styles from "./ComparatieDetalii.module.css";
 
 export default function ComparatieDetalii() {
   const location = useLocation();
   const { pilot1, pilot2 } = location.state || {};
+  const [d1, setD1] = useState(null);
+  const [d2, setD2] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  //  obținem culoarea temei
+  // Obținem culoarea temei (păstrăm exact din codul original)
   const { team } = useFavoriteTeam();
   const teamStyles = {
     "Red Bull": { color: "#4570C0" },
@@ -22,21 +26,45 @@ export default function ComparatieDetalii() {
     "Aston Martin": { color: "#229971" },
   };
 
-  const favoriteColor = teamStyles[team]?.color || "#d32f2f"; // fallback: roșu standard
+  const favoriteColor = teamStyles[team]?.color || "#d32f2f";
 
+  // Păstrăm exact API-ul de la ChatGPT fără modificări
+  useEffect(() => {
+    const getData = async () => {
+      setLoading(true);
+      const res = await fetch("https://api.jolpi.ca/ergast/f1/2025/drivers");
+      const data = await res.json();
+      const drivers = data.MRData.DriverTable.Drivers;
+      setD1(drivers.find((d) => d.driverId === pilot1.id));
+      setD2(drivers.find((d) => d.driverId === pilot2.id));
+      setLoading(false);
+    };
+    getData();
+  }, [pilot1.id, pilot2.id]);
+
+  if (loading)
+    return (
+      <div className={styles["loading-message"]}>Se încarcă datele...</div>
+    );
+  if (!d1 || !d2)
+    return (
+      <div className={styles["error-message"]}>Nu s-au găsit pilotii.</div>
+    );
+
+  // Păstrăm structura și designul din codul original
   return (
     <div className={styles["comparatie-container"]}>
-      {/*  colorăm header */}
+      {/* Header-ul din codul original */}
       <header
         className={styles["header"]}
         style={{ backgroundColor: favoriteColor }}
       >
-        <h1 className={styles["h1"]}> COMPARATIE PILOTI</h1>
+        <h1 className={styles["h1"]}>COMPARATIE PILOTI</h1>
       </header>
 
       <div className={styles["glass-box"]}>
         <div className={styles["pilot-info-wrapper"]}>
-          {/* Poza pilot 1 */}
+          {/* Poza pilot 1 - din codul original */}
           <div className={styles["pilot-poza-wrapper"]}>
             <img
               src={pilot1.poza}
@@ -45,71 +73,51 @@ export default function ComparatieDetalii() {
             />
           </div>
 
-          {/* Info pilot 1 */}
+          {/* Info pilot 1 - combinăm datele din API cu structura originală */}
           <div className={styles["pilot-info"]}>
             <p>
-              <strong>NUME:</strong>
+              <strong>NUME:</strong> {pilot1.nume}
             </p>
-            <p>{pilot1.nume}</p>
             <p>
-              <strong>ECHIPA:</strong>
+              <strong>ECHIPA:</strong> {pilot1.echipa || "Echipa X"}
             </p>
-            <p>Echipa X</p>
             <p>
-              <strong>SEZOANE:</strong>
+              <strong>NUMAR:</strong> {d1.permanentNumber || "-"}
             </p>
-            <p>-</p>
             <p>
-              <strong>CURSE:</strong>
+              <strong>COD:</strong> {d1.code || "-"}
             </p>
-            <p>-</p>
             <p>
-              <strong>PODIUMURI:</strong>
+              <strong>DATA NAȘTERII:</strong> {d1.dateOfBirth || "-"}
             </p>
-            <p>-</p>
             <p>
-              <strong>WINS:</strong>
+              <strong>NAȚIONALITATE:</strong> {d1.nationality || "-"}
             </p>
-            <p>-</p>
-            <p>
-              <strong>CAMPIONATE:</strong>
-            </p>
-            <p>-</p>
           </div>
 
-          {/* Info pilot 2 */}
+          {/* Info pilot 2 - combinăm datele din API cu structura originală */}
           <div className={styles["pilot-info"]}>
             <p>
-              <strong>NUME:</strong>
+              <strong>NUME:</strong> {pilot2.nume}
             </p>
-            <p>{pilot2.nume}</p>
             <p>
-              <strong>ECHIPA:</strong>
+              <strong>ECHIPA:</strong> {pilot2.echipa || "Echipa Y"}
             </p>
-            <p>Echipa Y</p>
             <p>
-              <strong>SEZOANE:</strong>
+              <strong>NUMAR:</strong> {d2.permanentNumber || "-"}
             </p>
-            <p>-</p>
             <p>
-              <strong>CURSE:</strong>
+              <strong>COD:</strong> {d2.code || "-"}
             </p>
-            <p>-</p>
             <p>
-              <strong>PODIUMURI:</strong>
+              <strong>DATA NAȘTERII:</strong> {d2.dateOfBirth || "-"}
             </p>
-            <p>-</p>
             <p>
-              <strong>WINS:</strong>
+              <strong>NAȚIONALITATE:</strong> {d2.nationality || "-"}
             </p>
-            <p>-</p>
-            <p>
-              <strong>CAMPIONATE:</strong>
-            </p>
-            <p>-</p>
           </div>
 
-          {/* Poza pilot 2 */}
+          {/* Poza pilot 2 - din codul original */}
           <div className={styles["pilot-poza-wrapper"]}>
             <img
               src={pilot2.poza}
@@ -120,7 +128,7 @@ export default function ComparatieDetalii() {
         </div>
       </div>
 
-      {/* colorăm footer */}
+      {/* Footer-ul exact din codul original */}
       <footer
         className={styles["footer"]}
         style={{ backgroundColor: favoriteColor }}
