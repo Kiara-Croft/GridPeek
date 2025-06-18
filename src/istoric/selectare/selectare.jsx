@@ -108,6 +108,13 @@ export default function Selectare() {
         className={styles.footer}
         style={{ backgroundColor: favoriteColor }}
       >
+        <Link to="/" className={styles["footer-button"]}>
+          <Home size={20} style={{ marginRight: "8px" }} />
+        </Link>
+
+        <Link to="/comparatie" className={styles["footer-button"]}>
+          <Users size={20} style={{ marginRight: "8px" }} />
+        </Link>
         <div
           style={{
             display: "inline-block",
@@ -119,14 +126,6 @@ export default function Selectare() {
         >
           <History size={20} style={{ color: "#ffffff" }} />
         </div>
-
-        <Link to="/" className={styles["footer-button"]}>
-          <Home size={20} style={{ marginRight: "8px" }} />
-        </Link>
-
-        <Link to="/comparatie" className={styles["footer-button"]}>
-          <Users size={20} style={{ marginRight: "8px" }} />
-        </Link>
       </footer>
     </div>
   );

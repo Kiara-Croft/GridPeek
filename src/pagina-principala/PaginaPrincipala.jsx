@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Users, History, Star, Home } from "lucide-react";
+import { Users, History, Palette, Home } from "lucide-react";
 import { useFavoriteTeam } from "../FavoriteTeamContext/FavoriteTeamContext";
 import "./PaginaPrincipala.css";
 
@@ -148,7 +148,7 @@ export default function PaginaPrincipala() {
             className="footer-button"
             onClick={() => setShowDropdown(!showDropdown)}
           >
-            <Star size={20} style={{ marginRight: "8px" }} />
+            <Palette size={20} style={{ marginRight: "8px" }} />
           </button>
 
           {showDropdown && (

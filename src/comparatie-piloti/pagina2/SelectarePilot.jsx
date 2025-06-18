@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
-import { Home, Users } from "lucide-react";
+import { Home, Users, History } from "lucide-react";
 import styles from "./SelectarePilot.module.css";
 import { useFavoriteTeam } from "../../FavoriteTeamContext/FavoriteTeamContext";
 
@@ -132,7 +132,10 @@ export default function SelectarePilot() {
       className={styles["selectare-container"]}
       style={{ "--favorite-color": favoriteColor }}
     >
-      <header className={styles["header"]}>
+      <header
+        className={styles["header"]}
+        style={{ backgroundColor: favoriteColor }}
+      >
         <h1>COMPARAȚIE PILOȚI</h1>
       </header>
 
@@ -174,7 +177,13 @@ export default function SelectarePilot() {
         )}
       </div>
 
-      <nav className={styles["navbar"]}>
+      <nav
+        className={styles["navbar"]}
+        style={{ backgroundColor: favoriteColor }}
+      >
+        <Link to="/" className={styles["nav-button"]} title="Acasă">
+          <Home size={24} />
+        </Link>
         <div
           style={{
             display: "inline-block",
@@ -186,17 +195,13 @@ export default function SelectarePilot() {
         >
           <Users size={20} style={{ color: "#ffffff" }} />
         </div>
-        <Link to="/" className={styles["nav-button"]} title="Acasă">
-          <Home size={24} />
-        </Link>
-        <Link to="/istoric" className={styles["nav-button"]} title="Istoric">
-          <Users size={24} />
+
+        <Link to="/istoric" className={styles["footer-button"]}>
+          <History size={20} style={{ marginRight: "8px" }} />
         </Link>
       </nav>
 
-      <footer className={styles["footer"]}>
-        <span>© 2025 Miruna's F1 App</span>
-      </footer>
+      <footer className={styles["footer"]}></footer>
     </div>
   );
 }
